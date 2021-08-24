@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface iCustomerRentalRepo extends JpaRepository<CustomerRental, Integer> {
-    List<CustomerRental> findAllRentals();
-    List<CustomerRental> findCustomerRentalByCustomer(Customer customer);
+//    List<CustomerRental> findAllRentals();
+//    List<CustomerRental> findCustomerRentalByCustomer(Customer customer);
 }

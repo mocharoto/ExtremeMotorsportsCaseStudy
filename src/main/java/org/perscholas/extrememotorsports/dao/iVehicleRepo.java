@@ -8,8 +8,8 @@ import java.util.List;
 
 @Repository
 public interface iVehicleRepo extends JpaRepository<Vehicles, Integer>{
-    Vehicles getVehiclesById(Integer vehicleId);
-    List<Vehicles> getAllVehicles();
+    Vehicles findByVehicleId(Integer vehicleId);
+//    List<Vehicles> getAllVehicles();
 
 
 }

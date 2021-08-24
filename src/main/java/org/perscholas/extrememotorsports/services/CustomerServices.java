@@ -28,6 +28,7 @@ public class CustomerServices {
     public Customer getCustomerById(Integer customerId) {
         Customer customer = customerRepo.getById(customerId);
         log.warn(String.valueOf(customer));
+        customerRepo.
         return customer;
     }
 
@@ -74,7 +75,7 @@ public class CustomerServices {
     public void delete(Integer id) throws CustomerNotFoundException {
         Optional<Customer> getCustomer = customerRepo.findById(id);
         if(getCustomer.isPresent()) {
-            customerRepo.deleteCustomerById(id);
+//            customerRepo.deleteCustomerById(id);
         }
         throw new CustomerNotFoundException("Could not find customer by Id " + id);
     }

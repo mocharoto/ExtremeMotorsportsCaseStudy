@@ -9,10 +9,9 @@ import java.util.List;
 
 @Repository
 public interface iCustomerRepo extends JpaRepository<Customer, Integer> {
-    Customer getCustomerById(Integer customerId);
-    Customer getCustomerByEmail(String customerEmail);
-    List<Customer> findAllCustomers();
-    List<Vehicles> getCustomerVehicleList();
-    void deleteCustomerById(Integer customerId);
-    void deleteCustomerByEmail(String customerEmail);
+//    Customer findByCustomerId(Integer customerId);
+    Customer findByCustomerEmail(String customerEmail);
+//    List<Vehicles> getCustomerrentedVehicles();
+//    void deleteCustomerById(Integer customerId);
+//    void deleteCustomerByEmail(String customerEmail);
 }
