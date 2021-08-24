@@ -28,7 +28,7 @@ public class CustomerServices {
     public Customer getCustomerById(Integer customerId) {
         Customer customer = customerRepo.getById(customerId);
         log.warn(String.valueOf(customer));
-        customerRepo.
+
         return customer;
     }
 
@@ -39,8 +39,9 @@ public class CustomerServices {
         return customers;
     }
 
-    public void saveCustomer(Customer customer) {
+    public Customer saveCustomer(Customer customer) {
         customerRepo.save(customer);
+        return customer;
     }
 
     public boolean validateCustomer(Customer customer) {
