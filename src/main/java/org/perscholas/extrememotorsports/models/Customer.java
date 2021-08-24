@@ -15,7 +15,6 @@ import java.util.List;
 @NotNull
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Component
 @Getter

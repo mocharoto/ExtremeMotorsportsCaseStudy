@@ -10,18 +10,26 @@
       xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Extreme Motorsports!</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Vehicles</title>
 </head>
 <body>
-    <header>
-        <div class="form-box">
-            <button type="button" class="toggle-btn" onclick="login()">Login</button>
-            <button type="button" class="toggle-btn" onclick="register()">Register</button>
-        </div>
-    </header>
-
+    <h2>Vehicle List</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Vehicle Id</th>
+            <th scope="col">Vehicle Name</th>
+            <th scope="col">Vehicle Mileage</th>
+            <th scope="col">Vehicle Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course: ${courses}">
+            <th scope="row" th:text="${course.courseId}"></th>
+            <td th:text="${course.name}"></td>
+            <td th:text="${course.instructor}">Otto</td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>
