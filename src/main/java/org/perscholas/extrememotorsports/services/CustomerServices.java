@@ -40,8 +40,9 @@ public class CustomerServices {
     }
 
     public Customer saveCustomer(Customer customer) {
-        customerRepo.save(customer);
-        return customer;
+        log.warn(customer.toString());
+        Customer createdCustomer = customerRepo.save(customer);
+        return createdCustomer;
     }
 
     public boolean validateCustomer(Customer customer) {
@@ -76,7 +77,7 @@ public class CustomerServices {
     public void delete(Integer id) throws CustomerNotFoundException {
         Optional<Customer> getCustomer = customerRepo.findById(id);
         if(getCustomer.isPresent()) {
-//            customerRepo.deleteCustomerById(id);
+            customerRepo.deleteById(id);
         }
         throw new CustomerNotFoundException("Could not find customer by Id " + id);
     }

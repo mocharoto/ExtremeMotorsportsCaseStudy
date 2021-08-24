@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org http://www.thymeleaf.org
+  http://www.ultraq.net.nz/thymeleaf/layout https://www.ultraq.net.nz/thymeleaf/layout
+  http://www.thymeleaf.org/thymeleaf-extras-springsecurity4 http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center mt-5">
+            <h1>Customers</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Customer Id</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Customer Username</th>
+                        <th scope="col">Customer Email</th>
+                        <th scope="col">Customer Address</th>
+                        <th scope="col">Customer Phone Number</th>
+                        <th scope="col">Customer Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="c:${customers}">
+                        <th scope="row" th:text="${c.customerId}"></th>
+                        <td th:text="${c.customerName}"></td>
+                        <td th:text="${c.customerUsername}"></td>
+                        <td th:text="${c.customerEmail}"></td>
+                        <td th:text="${c.customerAddress}"></td>
+                        <td th:text="${c.customerPhoneNumber}"></td>
+                        <td th:text="${c.customerStatus}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</body>
+</html>

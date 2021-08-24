@@ -1,7 +1,7 @@
 package org.perscholas.extrememotorsports.controllers;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,10 +22,5 @@ public class HomeController {
         return "index";
     }
 
-    @PostMapping({"/process"})
-    public String addUser(@ModelAttribute("newUser") @Valid User user, BindingResult bindingResult, Model model) {
-        log.trace("Adding new user");
-        model.addAttribute("newUser", user);
-        return "index";
-    }
+
 }

@@ -6,14 +6,13 @@ import org.perscholas.extrememotorsports.services.CustomerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @Slf4j
-@RequestMapping("/customer")
+@SessionAttributes({"currentCustomer"})
 public class CustomerController {
     private CustomerServices customerService;
 
@@ -22,18 +21,17 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @PostMapping("/createdCustomer")
-    public String showCustomerData(@ModelAttribute("customer")Customer customer, Model model) {
-        log.warn("Post Request!");
-        Customer createdCustomer = customerService.saveCustomer(customer);
-        log.warn(createdCustomer.toString());
-        model.addAttribute("createdCustomer", createdCustomer);
-        return "created-customer";
+    @GetMapping("/customers")
+    public String getCustomers(Model model) {
+        List<Customer> customers = customerService.getAllCustomers();
+        log.warn("Number of customers: " + customers.size());
+        model.addAttribute("customers", customers);
+        return "customers";
     }
 
-    @GetMapping("/registeredCustomer")
-    public String registerCustomer(Model model) {
+    @GetMapping("/customerregistration")
+    public String getCustomerRegistration(Model model) {
         model.addAttribute("customer", new Customer());
-        return "registered-customer";
+        return "customerregistration";
     }
 }

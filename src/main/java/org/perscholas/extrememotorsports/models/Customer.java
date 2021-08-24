@@ -47,7 +47,6 @@ public class Customer {
     @NonNull
     Boolean customerStatus;
     @OneToMany
-    @NonNull
     List<Vehicles> rentedVehicles;
 
 }

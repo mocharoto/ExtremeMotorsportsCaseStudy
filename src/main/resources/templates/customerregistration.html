@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org http://www.thymeleaf.org
+  http://www.ultraq.net.nz/thymeleaf/layout https://www.ultraq.net.nz/thymeleaf/layout
+  http://www.thymeleaf.org/thymeleaf-extras-springsecurity4 http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center mt-5">
+            <h1>Customer Registration</h1>
+            <form action="customerreistration" method="POST" th:object="${customer}">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" th:field="*{customerUsername}" />
+                <label>Full Name</label>
+                <input type="text" class="form-control" name="name" th:field="*{customerName}" />
+                <label>Email</label>
+                <input type="text" class="form-control" name="email" th:field="*{customerEmail}" />
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" th:field="*{password}" />
+                <label>Phone Number</label>
+                <input type="text" class="form-control" name="phonenumber" th:field="*{customerPhoneNumber}" />
+                <label>Address</label>
+                <input type="text" class="form-control" name="address" th:field="*{customerAddress}" />
+                <input type="submit" name="Submit" />
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</body>
+</html>
