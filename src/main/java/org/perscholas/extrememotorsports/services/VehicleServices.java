@@ -1,7 +1,9 @@
 package org.perscholas.extrememotorsports.services;
 
 import lombok.extern.slf4j.Slf4j;
+import org.perscholas.extrememotorsports.dao.iCustomerRepo;
 import org.perscholas.extrememotorsports.dao.iVehicleRepo;
+import org.perscholas.extrememotorsports.models.Customer;
 import org.perscholas.extrememotorsports.models.Vehicles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import java.util.Optional;
 @Slf4j
 public class VehicleServices {
     iVehicleRepo vehicleRepo;
+    iCustomerRepo customerRepo;
     @Autowired
     public VehicleServices(iVehicleRepo vehicleRepo) {
         this.vehicleRepo = vehicleRepo;
@@ -32,5 +35,31 @@ public class VehicleServices {
 
     public List<Vehicles> getAllVehicles() {
         return vehicleRepo.findAll();
+    }
+
+    public boolean checkIfVehicleIsAvailable(Integer vehicleId) {
+        Vehicles checkVehicle = vehicleRepo.findByVehicleId(vehicleId);
+        if(checkVehicle.getVehicleAvailability().equals("Available")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Customer rentVehicleToCustomer(Integer customerId, Integer vehicleId) {
+        Customer currentCustomer = customerRepo.getById(customerId);
+        Vehicles desiredVehicle = vehicleRepo.getById(vehicleId);
+
+
+        List<Vehicles> currentVehicles = currentCustomer.getRentedVehicles();
+
+        currentVehicles.add(desiredVehicle);
+        currentCustomer.setRentedVehicles(currentVehicles);
+
+        desiredVehicle.setVehicleAvailability("Unavailable");
+        Customer updatedCustomer = customerRepo.save(currentCustomer);
+        vehicleRepo.save(desiredVehicle);
+
+        return updatedCustomer;
     }
 }

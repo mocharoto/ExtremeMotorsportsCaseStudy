@@ -46,7 +46,7 @@ public class Customer {
     @NotNull
     @NonNull
     Boolean customerStatus;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     List<Vehicles> rentedVehicles;
 
 }

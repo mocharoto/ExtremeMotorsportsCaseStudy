@@ -1,6 +1,7 @@
 package org.perscholas.extrememotorsports.controllers;
 
 import lombok.extern.slf4j.Slf4j;
+import org.perscholas.extrememotorsports.models.Customer;
 import org.perscholas.extrememotorsports.models.Vehicles;
 import org.perscholas.extrememotorsports.services.VehicleServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -41,5 +43,18 @@ public class VehicleController {
         vehicle.setVehicleStatus(true);
         vehicleServices.save(vehicle);
         return "redirect:/vehicles";
+    }
+
+    @PostMapping("vehicles")
+    public String rentVehicle(@RequestParam("customerid") Integer customerId, @RequestParam("vehicleid") Integer vehicleId, Model model) {
+        if(vehicleServices.checkIfVehicleIsAvailable(vehicleId) == false) {
+            return "error";
+        } else {
+            Customer currentCustomer = vehicleServices.rentVehicleToCustomer(customerId, vehicleId);
+            List<Vehicles> vehiclesList = currentCustomer.getRentedVehicles();
+            model.addAttribute("currentCustomer", currentCustomer);
+            model.addAttribute("vehicleList", vehiclesList);
+            return "rentedvehicleslist";
+        }
     }
 }

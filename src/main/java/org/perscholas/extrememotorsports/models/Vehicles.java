@@ -31,5 +31,7 @@ public class Vehicles {
     @NotNull
     Integer vehicleMileage;
     @NotNull
+    String vehicleAvailability;
+    @NotNull
     Boolean vehicleStatus;
 }

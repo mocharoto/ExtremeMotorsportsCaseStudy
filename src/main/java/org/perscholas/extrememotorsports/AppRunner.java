@@ -27,12 +27,13 @@ public class AppRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         customerRepo.save(new Customer(1, "asdf", "asdf", "asdf@asdf.com", "123asdf", "12345667", "asdf w sadf ave", true, null));
+        customerRepo.save(new Customer(2, "testCustomer", "Customer", "customer@email.com", "1234", "123-456-7890", "123 W Awesome St Awesome, ST 90210", true, null));
 
-        vehicleRepo.save(new Vehicles(1, "Yamaha", "YZ450FX", "Dirt Bike", "2020", 0, true));
-        vehicleRepo.save(new Vehicles(2, "Yamaha", "YZ450F", "Dirt Bike", "2019", 0, true));
-        vehicleRepo.save(new Vehicles(3, "Ski-Doo", "MXZ Sport Rotax 600 EFI", "Jet Ski", "2021", 0, true));
-        vehicleRepo.save(new Vehicles(4, "Ski-Doo", "MXZ TNT Rotax 850 E-TEC Ripsaw", "Jet Ski", "2021", 0, true));
-        vehicleRepo.save(new Vehicles(5, "Yamaha", "Smax", "Scooter", "2020", 0, true));
+        vehicleRepo.save(new Vehicles(1, "Yamaha", "YZ450FX", "Dirt Bike", "2020",  0, "Available",true));
+        vehicleRepo.save(new Vehicles(2, "Yamaha", "YZ450F", "Dirt Bike", "2019",  0, "Available",true));
+        vehicleRepo.save(new Vehicles(3, "Ski-Doo", "MXZ Sport Rotax 600 EFI", "Jet Ski", "2021",  0, "Available",true));
+        vehicleRepo.save(new Vehicles(4, "Ski-Doo", "MXZ TNT Rotax 850 E-TEC Ripsaw", "Jet Ski", "2021", 0, "Available", true));
+        vehicleRepo.save(new Vehicles(5, "Yamaha", "Smax", "Scooter", "2020", 0, "Available",true));
 
 
 
