@@ -37,6 +37,14 @@ public class CustomerController {
         return "customerregistration";
     }
 
+    @PostMapping("/customerregistration")
+    public String customerRegistration(Model model, @ModelAttribute("customer") Customer customer) {
+        customer.setCustomerStatus(true);
+        customerService.save(customer);
+        return "redirect:/customers";
+
+    }
+
     @GetMapping("/customerlogin")
     public String customerLogin(Model model) {
         log.warn("Login");

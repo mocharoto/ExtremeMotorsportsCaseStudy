@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -26,5 +28,18 @@ public class VehicleController {
         log.warn("Number of Vehicles: " + vehicles.size());
         model.addAttribute("vehicles", vehicles);
         return "vehicles";
+    }
+
+    @GetMapping("vehicleregistration")
+    public String getVehicleRegistration(Model model) {
+        model.addAttribute("vehicle", new Vehicles());
+        return "vehicleregistration";
+    }
+
+    @PostMapping("vehicleregistration")
+    public String vehicleRegistration(@ModelAttribute("vehicle") Vehicles vehicle) {
+        vehicle.setVehicleStatus(true);
+        vehicleServices.save(vehicle);
+        return "redirect:/vehicles";
     }
 }
