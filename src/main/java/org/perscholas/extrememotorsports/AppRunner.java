@@ -34,6 +34,12 @@ public class AppRunner implements CommandLineRunner {
         vehicleRepo.save(new Vehicles(3, "Ski-Doo", "MXZ Sport Rotax 600 EFI", "Jet Ski", "2021",  0, "Available",true));
         vehicleRepo.save(new Vehicles(4, "Ski-Doo", "MXZ TNT Rotax 850 E-TEC Ripsaw", "Jet Ski", "2021", 0, "Available", true));
         vehicleRepo.save(new Vehicles(5, "Yamaha", "Smax", "Scooter", "2020", 0, "Available",true));
+        vehicleRepo.save(new Vehicles(6, "Yamaha", "Bolt R-Spec", "Motorcycle", "2019", 0, "Available",true));
+        vehicleRepo.save(new Vehicles(7, "Yamaha", "MT-07", "Motorcycle", "2019", 0, "Available",true));
+        vehicleRepo.save(new Vehicles(8, "Razor", "Dune Buggy", "Dune Buggy", "?", 0, "Available",true));
+        vehicleRepo.save(new Vehicles(9, "Rimo", "Alpha", "Go Kart", "2008", 0, "Available",true));
+        vehicleRepo.save(new Vehicles(10, "Hammerhead", "Off-Road Mudhead", "Dune Buggy", "2021", 0, "Available",true));
+
 
 
 
