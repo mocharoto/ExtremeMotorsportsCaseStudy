@@ -2,7 +2,6 @@ package org.perscholas.extrememotorsports.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.perscholas.extrememotorsports.dao.iCustomerRepo;
-import org.perscholas.extrememotorsports.exceptions.CustomerNotFoundException;
 import org.perscholas.extrememotorsports.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
