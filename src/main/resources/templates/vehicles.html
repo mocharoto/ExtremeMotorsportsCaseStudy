@@ -5,6 +5,36 @@
     <title>Vehicles</title>
 </head>
 <body>
-
+    <div class="container">
+        <div class="text-center mt-5">
+            <h1>Vehicles</h1>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Vehicle Id</th>
+                    <th scope="col">Vehicle Make</th>
+                    <th scope="col">Vehicle Model</th>
+                    <th scope="col">Vehicle Type</th>
+                    <th scope="col">Vehicle Year</th>
+                    <th scope="col">Vehicle Mileage</th>
+                    <th scope="col">Vehicle Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="v:${vehicles}">
+                    <th scope="row" th:text="${v.vehicleId}"></th>
+                    <td th:text="${v.vehicleMake}"></td>
+                    <td th:text="${v.vehicleModel}"></td>
+                    <td th:text="${v.vehicleType}"></td>
+                    <td th:text="${v.vehicleYear}"></td>
+                    <td th:text="${v.vehicleMileage}"></td>
+                    <td th:text="${v.vehicleStatus}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </body>
 </html>

@@ -21,7 +21,13 @@ public class Vehicles {
     @NotNull
     Integer vehicleId;
     @NotNull
-    String vehicleName;
+    String vehicleMake;
+    @NotNull
+    String vehicleModel;
+    @NotNull
+    String vehicleType;
+    @NotNull
+    String vehicleYear;
     @NotNull
     Integer vehicleMileage;
     @NotNull

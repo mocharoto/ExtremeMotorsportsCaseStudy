@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.perscholas.extrememotorsports.dao.iCustomerRepo;
 import org.perscholas.extrememotorsports.dao.iVehicleRepo;
 import org.perscholas.extrememotorsports.models.Customer;
+import org.perscholas.extrememotorsports.models.Vehicles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -26,5 +27,7 @@ public class AppRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         customerRepo.save(new Customer(1, "asdf", "asdf", "asdf@asdf.com", "123asdf", "12345667", "asdf w sadf ave", true, null));
+
+        vehicleRepo.save(new Vehicles(1, "Yamaha", "YZ450FX", "Dirt Bike", "2020", 0, true));
     }
 }
