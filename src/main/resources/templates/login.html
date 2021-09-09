@@ -29,28 +29,55 @@
         </div>
     </nav>
 </header>
+<!--<div class="container">-->
+<!--    <div class="text-center mt-5">-->
+<!--        <h1>Login</h1>-->
+<!--        <form name="f" action="login" method="POST" th:object="${currentCustomer}">-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <td>Username:</td>-->
+<!--                    <td><input type="text" name="username" value="" th:field="*{customerUsername}" /></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Password:</td>-->
+<!--                    <td><input type="password" name="password" th:field="*{password}" /></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><input type="submit" name="submit" value="submit" /></td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
 <div class="container">
-    <div class="text-center mt-5">
-        <h1>Login</h1>
-        <form name="f" action="login" method="POST" th:object="${currentCustomer}">
-            <table>
-                <tr>
-                    <td>Username:</td>
-                    <td><input type="text" name="username" value="" th:field="*{customerUsername}" /></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><input type="password" name="password" th:field="*{password}" /></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" name="submit" value="submit" /></td>
-                </tr>
-            </table>
-        </form>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <div th:if="${param.error}" class="error">
+                Invalid username or password.
+            </div>
+            <div th:if="${param.logout}" class="error">
+                You have been logged out.
+            </div>
+
+            <!-- Login Form -->
+            <form th:action="@{/login/authenticate}" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" aria-describedby="usernamehelp">
+                    <div id="usernamehelp" class="form-text">Enter Username</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password">
+                </div>
+            </form>
+        </div>
+        <div class="col>"></div>
     </div>
 </div>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script th:src="@{../static/login.js}"></script>
+
 </body>
 </html>
