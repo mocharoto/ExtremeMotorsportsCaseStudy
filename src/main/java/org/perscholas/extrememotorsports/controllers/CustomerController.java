@@ -45,17 +45,17 @@ public class CustomerController {
 
     }
 
-    @GetMapping("/customerlogin")
-    public String customerLogin(Model model) {
-        log.warn("Login");
-        model.addAttribute("currentCustomer", new Customer());
-        return "login";
-    }
-
-    @PostMapping("/customerlogin")
-    public String customerLoginComplete(Model model, @ModelAttribute("currentCustomer") @Valid Customer currCustomer, BindingResult bindingResult) {
-        log.warn("Login complete");
-
-        return "login";
-    }
+//    @GetMapping("/customerlogin")
+//    public String customerLogin(Model model) {
+//        log.warn("Login");
+//        model.addAttribute("currentCustomer", new Customer());
+//        return "login";
+//    }
+//
+//    @PostMapping("/customerlogin")
+//    public String customerLoginComplete(Model model, @ModelAttribute("currentCustomer") @Valid Customer currCustomer, BindingResult bindingResult) {
+//        log.warn("Login complete");
+//
+//        return "login";
+//    }
 }

@@ -39,8 +39,8 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/console/**").hasAuthority("ROLE_ADMIN")
-                .antMatchers("/customer/**").hasAnyAuthority("ROLE_CUSTOMER", "ROLE_ADMIN")
+                .antMatchers("/console/**").hasAuthority("ROLE_EMPLOYEE")
+                .antMatchers("/customer/**").hasAnyAuthority("ROLE_CUSTOMER", "ROLE_EMPLOYEE")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password").loginProcessingUrl("login/authenticate").defaultSuccessUrl("/").failureUrl("/login?error=true").permitAll()
