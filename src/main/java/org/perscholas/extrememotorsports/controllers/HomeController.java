@@ -24,6 +24,7 @@ public class HomeController {
 
     @GetMapping("/login")
     public String login() {
+        log.warn("login method");
         return "login";
     }
 

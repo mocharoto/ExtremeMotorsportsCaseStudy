@@ -26,8 +26,9 @@ public class AppRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        customerRepo.save(new Customer(1, "asdf", "asdf", "asdf@asdf.com", "123asdf", "12345667", "asdf w sadf ave", true, null));
-        customerRepo.save(new Customer(2, "testCustomer", "Customer", "customer@email.com", "1234", "123-456-7890", "123 W Awesome St Awesome, ST 90210", true, null));
+        //hashed password 123asdf
+        customerRepo.save(new Customer(1, "asdf", "asdf", "asdf@asdf.com", "$2a$04$Y6cl.8L86yd9ZRtArM8Wpea5w7.ESWAWQbDhXeCzvavcjkMlE.0im", "12345667", "asdf w sadf ave", true, null));
+        customerRepo.save(new Customer(2, "testCustomer", "Customer", "customer@email.com", "$2a$04$Y6cl.8L86yd9ZRtArM8Wpea5w7.ESWAWQbDhXeCzvavcjkMlE.0im", "123-456-7890", "123 W Awesome St Awesome, ST 90210", true, null));
 
         vehicleRepo.save(new Vehicles(1, "Yamaha", "YZ450FX", "Dirt Bike", "2020",  0, "Available",true));
         vehicleRepo.save(new Vehicles(2, "Yamaha", "YZ450F", "Dirt Bike", "2019",  0, "Available",true));
