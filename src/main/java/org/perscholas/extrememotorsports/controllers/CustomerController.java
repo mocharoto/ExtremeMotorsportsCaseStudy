@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.perscholas.extrememotorsports.models.Customer;
 import org.perscholas.extrememotorsports.services.CustomerServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -39,6 +40,12 @@ public class CustomerController {
 
     @PostMapping("/customerregistration")
     public String customerRegistration(Model model, @ModelAttribute("customer") Customer customer) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+
+        String password = customer.getPassword();
+        String hashedPassword = bCryptPasswordEncoder.encode(password);
+        log.warn(hashedPassword);
+        customer.setPassword(hashedPassword);
         customer.setCustomerStatus(true);
         customerService.save(customer);
         return "redirect:/customers";

@@ -14,6 +14,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link type="text/css" th:href="@{/index_css.css}" rel="stylesheet" />
+
 </head>
 <body>
 <!--    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
@@ -40,6 +42,12 @@
             <a class="navbar-brand" th:href="@{/}">Extreme Motorsports</a>
             <div sec:authorize="isAnonymous()">
                 <a th:href="@{/login}">Login</a>
+                <a th:href="@{/customerregistration}">Customer Registration</a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/index}">Home</a>
+                <a th:href="@{/vehicles}">Vehicles</a>
+                <a th:href="@{/logout}">Logout</a>
             </div>
 <!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>-->
 <!--            <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
@@ -91,19 +99,19 @@
             <div class="mySlides fade">
                 <div class="numberText"> 1 / 3</div>
                 <!-- dunes -->
-                <img src="" style="width:100%">
+                <img th:src="@{~/imgs/dunes.jpg}" style="width:100%">
                 <div class="text">Ride along the dunes!</div>
             </div>
             <div class="mySlides fade">
                 <div class="numberText">2 / 3</div>
                 <!-- lake -->
-                <img src="" style="width:100%">
+                <img th:src="@{~/imgs/lake.jpg}" style="width:100%">
                 <div class="text">Tear up the lake!</div>
             </div>
             <div class="mySlides fade">
                 <div class="numberText">3 / 3</div>
                 <!-- open road -->
-                <img src="" style="width:100%">
+                <img th:src="@{~/imgs/openroad.jpg}" style="width:100%">
                 <div class="text">Cruise along the open road!</div>
             </div>
 
@@ -119,10 +127,10 @@
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
         </div>
-<!--        <p>Ride them on the dunes! <img src="../static/imgs/dunes.jpg"></p>-->
-<!--        <p>Ride them on the water! <img src="../static/imgs/lake.jpg"></p>-->
-<!--        <p>Ride them on the open road! <img src="../static/imgs/openroad.jpg"></p>-->
+
     </div>
 </div>
+<!-- Javascript for picture slideshow -->
+<script type="text/javascript" th:src="@{/index_js.js}"></script>
 </body>
 </html>

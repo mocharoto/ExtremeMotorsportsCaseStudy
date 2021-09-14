@@ -16,7 +16,7 @@ import javax.validation.Valid;
 public class HomeController {
 
     //Opens up homepage
-    @GetMapping({"/", "index"})
+    @GetMapping({"/", "/index"})
     public String showIndex() {
         log.warn("Requesting homepage");
         return "index";
