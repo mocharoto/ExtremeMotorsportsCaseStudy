@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org http://www.thymeleaf.org
+  http://www.ultraq.net.nz/thymeleaf/layout https://www.ultraq.net.nz/thymeleaf/layout
+  http://www.thymeleaf.org/thymeleaf-extras-springsecurity4 http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Extreme Motorsports</a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/index}">Home</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--<div class="container">-->
+<!--    <div class="text-center mt-5">-->
+<!--        <h1>Login</h1>-->
+<!--        <form name="f" action="login" method="POST" th:object="${currentCustomer}">-->
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <td>Username:</td>-->
+<!--                    <td><input type="text" name="username" value="" th:field="*{customerUsername}" /></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Password:</td>-->
+<!--                    <td><input type="password" name="password" th:field="*{password}" /></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><input type="submit" name="submit" value="submit" /></td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <div th:if="${param.error}" class="error">
+                Invalid username or password.
+            </div>
+
+
+            <!-- Login Form -->
+            <form th:action="@{/login/authenticate}" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" aria-describedby="usernamehelp">
+                    <div id="usernamehelp" class="form-text">Enter Username</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col>"></div>
+    </div>
+</div>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</body>
+</html>

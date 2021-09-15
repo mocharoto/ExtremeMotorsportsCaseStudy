@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org http://www.thymeleaf.org
+  http://www.ultraq.net.nz/thymeleaf/layout https://www.ultraq.net.nz/thymeleaf/layout
+  http://www.thymeleaf.org/thymeleaf-extras-springsecurity4 http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicles</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default">
+        <a class="navbar-brand" th:href="@{/}">Extreme Motorsports</a>
+        <div sec:authorize="isAuthenticated()">
+            <a th:href="@{/index}">Home</a>
+            <a th:href="@{/vehicles}">Vehicles</a>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+    </nav>
+</header>
+    <div class="container">
+        <div class="text-center mt-5">
+            <h1>Vehicles</h1>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Vehicle Id</th>
+                    <th scope="col">Vehicle Make</th>
+                    <th scope="col">Vehicle Model</th>
+                    <th scope="col">Vehicle Type</th>
+                    <th scope="col">Vehicle Year</th>
+                    <th scope="col">Vehicle Mileage</th>
+                    <th scope="col">Vehicle Availability</th>
+                    <th scope="col">Vehicle Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="v : ${vehicles}">
+                    <th scope="row" th:text="${v.vehicleId}"></th>
+                    <td th:text="${v.vehicleMake}"></td>
+                    <td th:text="${v.vehicleModel}"></td>
+                    <td th:text="${v.vehicleType}"></td>
+                    <td th:text="${v.vehicleYear}"></td>
+                    <td th:text="${v.vehicleMileage}"></td>
+                    <td th:text="${v.vehicleAvailability}"></td>
+                    <td th:text="${v.vehicleStatus}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h2>Rent Vehicle</h2>
+            <form th:action="@{/vehicles/rent}" method="POST">
+                <div class="mb-3">
+                    <label>Customer ID</label>
+                    <input type="text" class="form-control" name="customerid">
+                </div>
+                <div class="mb-3">
+                    <label>Vehicle ID</label>
+                    <input type="text" class="form-control" name="vehicleid">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</body>
+</html>
