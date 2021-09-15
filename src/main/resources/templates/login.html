@@ -10,7 +10,7 @@
       xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
 </head>
 <body>
 <header>
@@ -19,13 +19,9 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Extreme Motorsports</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a th:href="@{/index}">Home</a></li>
-                <li><a th:href="@{/customers}">Customers</a></li>
-                <li><a th:href="@{/customerregistration}">Customer Registration</a></li>
-                <li><a th:href="@{/vehicles}">Vehicles</a></li>
-                <li><a th:href="@{/vehicleregistration}">Vehicle Registration</a></li>
-            </ul>
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/index}">Home</a>
+            </div>
         </div>
     </nav>
 </header>
@@ -56,9 +52,7 @@
             <div th:if="${param.error}" class="error">
                 Invalid username or password.
             </div>
-            <div th:if="${param.logout}" class="error">
-                You have been logged out.
-            </div>
+
 
             <!-- Login Form -->
             <form th:action="@{/login/authenticate}" method="post">

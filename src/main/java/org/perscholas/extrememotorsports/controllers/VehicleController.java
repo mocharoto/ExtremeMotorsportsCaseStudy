@@ -1,7 +1,6 @@
 package org.perscholas.extrememotorsports.controllers;
 
 import lombok.extern.slf4j.Slf4j;
-import org.perscholas.extrememotorsports.exceptions.VehicleNotFoundException;
 import org.perscholas.extrememotorsports.models.Customer;
 import org.perscholas.extrememotorsports.models.Vehicles;
 import org.perscholas.extrememotorsports.services.VehicleServices;
@@ -58,18 +57,31 @@ public class VehicleController {
 //            return "rentedvehicleslist";
 //        }
 //    }
+    //Show Customer's rented vehicles
+//    @GetMapping("/rentedvehicles")
+//    public String rentedVehicles(Model model) {
+//
+//    }
 //    TODO: Finish vehicle rental logic
+    @PostMapping("/vehicles")
+    public String vehicleList(@RequestParam("customerId") Integer customerId, @RequestParam("vehicleId") Integer vehicleId, Model model) {
+        if (!vehicleServices.checkIfVehicleIsAvailable(vehicleId)) {
+            return "vehicles";
+        } else {
+            Customer customer = vehicleServices.rentVehicleToCustomer(customerId, vehicleId);
+            List<Vehicles> customerVehicles = customer.getRentedVehicles();
+            model.addAttribute("customer", customer);
+            model.addAttribute("vehicles", customerVehicles);
+            return "rentedvehicleslist";
+        }
+    }
 //    @GetMapping("/vehicles/rent_vehicle")
-//    public String rentVehicle(@PathVariable("vehicleId") Integer vehicleId, Model model, RedirectAttributes redirectAttributes) {
-//        try {
+//    public String rentVehicle(@PathVariable("vehicleId") Integer vehicleId, Model model) {
 //            Optional<Vehicles> vehicles = vehicleServices.getVehicleById(vehicleId);
+//            model.addAttribute("vehicles", vehicles);
+//            return "rentedvehicleslist";
 //
 //
 //
-//        } catch (VehicleNotFoundException e) {
-//            redirectAttributes.addFlashAttribute("message", "Vehicle not found");
-//            e.printStackTrace();
-//            return "redirect:/vehicles";
-//        }
 //    }
 }

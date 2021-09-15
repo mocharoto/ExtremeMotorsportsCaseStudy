@@ -39,11 +39,7 @@ public class VehicleServices {
 
     public boolean checkIfVehicleIsAvailable(Integer vehicleId) {
         Vehicles checkVehicle = vehicleRepo.findByVehicleId(vehicleId);
-        if(checkVehicle.getVehicleAvailability().equals("Available")) {
-            return true;
-        } else {
-            return false;
-        }
+        return checkVehicle.getVehicleAvailability().equals("Available");
     }
 
     public Customer rentVehicleToCustomer(Integer customerId, Integer vehicleId) {

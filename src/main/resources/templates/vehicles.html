@@ -40,7 +40,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="v:${vehicles}">
+                <tr th:each="v : ${vehicles}">
                     <th scope="row" th:text="${v.vehicleId}"></th>
                     <td th:text="${v.vehicleMake}"></td>
                     <td th:text="${v.vehicleModel}"></td>
@@ -54,7 +54,7 @@
             </table>
 
             <h2>Rent Vehicle</h2>
-            <form th:action="vehicles" method="POST">
+            <form th:action="@{/vehicles/rent}" method="POST">
                 <div class="mb-3">
                     <label>Customer ID</label>
                     <input type="text" class="form-control" name="customerid">

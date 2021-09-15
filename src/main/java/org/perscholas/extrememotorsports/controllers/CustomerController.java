@@ -1,6 +1,8 @@
 package org.perscholas.extrememotorsports.controllers;
 
 import lombok.extern.slf4j.Slf4j;
+import org.perscholas.extrememotorsports.dao.iAuthGroupRepo;
+import org.perscholas.extrememotorsports.models.AuthGroup;
 import org.perscholas.extrememotorsports.models.Customer;
 import org.perscholas.extrememotorsports.services.CustomerServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +20,12 @@ import java.util.List;
 @SessionAttributes({"currentCustomer"})
 public class CustomerController {
     private CustomerServices customerService;
+    private iAuthGroupRepo authGroupRepo;
 
     @Autowired
-    public CustomerController(CustomerServices customerService) {
+    public CustomerController(CustomerServices customerService, iAuthGroupRepo authGroupRepo) {
         this.customerService = customerService;
+        this.authGroupRepo = authGroupRepo;
     }
 
     @GetMapping("/customers")
@@ -38,16 +42,39 @@ public class CustomerController {
         return "customerregistration";
     }
 
-    @PostMapping("/customerregistration")
-    public String customerRegistration(Model model, @ModelAttribute("customer") Customer customer) {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+//    @PostMapping("/customerregistration")
+//    public String customerRegistration( @ModelAttribute("customer") Customer customer, BindingResult result, Model model) {
+//        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+//
+//        String password = customer.getPassword();
+//        String hashedPassword = bCryptPasswordEncoder.encode(password);
+//        log.warn(hashedPassword);
+//        customer.setPassword(hashedPassword);
+//        customer.setCustomerStatus(true);
+//        if (result.hasErrors()) {
+//            return "customerregistration";
+//        }
+//        customerService.save(customer);
+//        return "redirect:/customers";
+//
+//    }
 
+    @PostMapping("/customerregistration")
+    public String customerRegistration( @Valid Customer customer, BindingResult result, Model model) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+        //hash password
         String password = customer.getPassword();
         String hashedPassword = bCryptPasswordEncoder.encode(password);
         log.warn(hashedPassword);
         customer.setPassword(hashedPassword);
         customer.setCustomerStatus(true);
+
+        if (result.hasErrors()) {
+            return "customerregistration";
+        }
         customerService.save(customer);
+        //Set role
+        authGroupRepo.save(new AuthGroup(customer.getCustomerId(), "ROLE_CUSTOMER"));
         return "redirect:/customers";
 
     }

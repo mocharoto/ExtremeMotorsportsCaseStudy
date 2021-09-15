@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org http://www.thymeleaf.org
+  http://www.ultraq.net.nz/thymeleaf/layout https://www.ultraq.net.nz/thymeleaf/layout
+  http://www.thymeleaf.org/thymeleaf-extras-springsecurity4 http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Rented Vehicles</title>
 </head>
 <body>
-
+    <div class="text-center mt-5">
+        <h1 th:text="${customer.customerName}"></h1>
+        <h1>Rented Vehicles</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Vehicle Make</th>
+                <th scope="col">Vehicle Model</th>
+                <th scope="col">Vehicle Type</th>
+                <th scope="col">Vehicle Mileage</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vehicle: ${vehicles}">
+                <td th:text="${vehicle.vehicleMake}"></td>
+                <td th:text="${vehicle.vehicleModel}"></td>
+                <td th:text="${vehicle.vehicleType}"></td>
+                <td th:text="${vehicle.vehicleMileage}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

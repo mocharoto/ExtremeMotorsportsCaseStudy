@@ -30,6 +30,6 @@ public class HomeController {
 
     @GetMapping("/403")
     public String accessDenied() {
-        return "error";
+        return "403";
     }
 }
