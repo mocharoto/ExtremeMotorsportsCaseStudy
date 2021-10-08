@@ -54,14 +54,14 @@
             </table>
 
             <h2>Rent Vehicle</h2>
-            <form th:action="@{/vehicles/rent}" method="POST">
+            <form th:action="@{vehicles/rent}" method="POST">
                 <div class="mb-3">
                     <label>Customer ID</label>
-                    <input type="text" class="form-control" name="customerid">
+                    <input type="text" class="form-control" name="customerId">
                 </div>
                 <div class="mb-3">
                     <label>Vehicle ID</label>
-                    <input type="text" class="form-control" name="vehicleid">
+                    <input type="text" class="form-control" name="vehicleId">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

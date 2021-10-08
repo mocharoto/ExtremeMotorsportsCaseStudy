@@ -42,9 +42,9 @@ public class AppRunner implements CommandLineRunner {
         authGroupRepo.save(new AuthGroup(2, "ROLE_CUSTOMER"));
 
         //Add vehicles to database
-        vehicleRepo.save(new Vehicles(1, "Yamaha", "YZ450FX", "Dirt Bike", "2020",  0, "Available",true));
+        vehicleRepo.save(new Vehicles(1, "Yamaha", "YZ450FX", "Dirt Bike", "2020",  0, "Unavailable",true));
         vehicleRepo.save(new Vehicles(2, "Yamaha", "YZ450F", "Dirt Bike", "2019",  0, "Available",true));
-        vehicleRepo.save(new Vehicles(3, "Ski-Doo", "MXZ Sport Rotax 600 EFI", "Jet Ski", "2021",  0, "Available",true));
+        vehicleRepo.save(new Vehicles(3, "Ski-Doo", "MXZ Sport Rotax 600 EFI", "Jet Ski", "2021",  0, "Unavailable",true));
         vehicleRepo.save(new Vehicles(4, "Ski-Doo", "MXZ TNT Rotax 850 E-TEC Ripsaw", "Jet Ski", "2021", 0, "Available", true));
         vehicleRepo.save(new Vehicles(5, "Yamaha", "Smax", "Scooter", "2020", 0, "Available",true));
         vehicleRepo.save(new Vehicles(6, "Yamaha", "Bolt R-Spec", "Motorcycle", "2019", 0, "Available",true));

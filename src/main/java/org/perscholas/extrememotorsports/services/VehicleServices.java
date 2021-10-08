@@ -19,8 +19,9 @@ public class VehicleServices {
     iVehicleRepo vehicleRepo;
     iCustomerRepo customerRepo;
     @Autowired
-    public VehicleServices(iVehicleRepo vehicleRepo) {
+    public VehicleServices(iVehicleRepo vehicleRepo, iCustomerRepo customerRepo) {
         this.vehicleRepo = vehicleRepo;
+        this.customerRepo = customerRepo;
     }
 
     public Vehicles save(Vehicles vehicle) {
@@ -43,6 +44,8 @@ public class VehicleServices {
     }
 
     public Customer rentVehicleToCustomer(Integer customerId, Integer vehicleId) {
+        log.warn(String.valueOf(customerId));
+        log.warn(String.valueOf(vehicleId));
         Customer currentCustomer = customerRepo.getById(customerId);
         Vehicles desiredVehicle = vehicleRepo.getById(vehicleId);
 

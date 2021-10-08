@@ -63,12 +63,16 @@ public class VehicleController {
 //
 //    }
 //    TODO: Finish vehicle rental logic
-    @PostMapping("/vehicles")
-    public String vehicleList(@RequestParam("customerId") Integer customerId, @RequestParam("vehicleId") Integer vehicleId, Model model) {
-        if (!vehicleServices.checkIfVehicleIsAvailable(vehicleId)) {
+    @PostMapping("vehicles/rent")
+    public String vehicleList(@RequestParam("customerId") String customerId, @RequestParam("vehicleId") String vehicleId, Model model) {
+        Integer vId = Integer.valueOf(vehicleId);
+        Integer cId = Integer.valueOf(customerId);
+        if (!vehicleServices.checkIfVehicleIsAvailable(vId)) {
             return "vehicles";
         } else {
-            Customer customer = vehicleServices.rentVehicleToCustomer(customerId, vehicleId);
+            Customer customer = vehicleServices.rentVehicleToCustomer(cId, vId);
+            log.warn(String.valueOf(customerId));
+            log.warn(String.valueOf(vehicleId));
             List<Vehicles> customerVehicles = customer.getRentedVehicles();
             model.addAttribute("customer", customer);
             model.addAttribute("vehicles", customerVehicles);

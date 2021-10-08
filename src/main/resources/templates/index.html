@@ -39,7 +39,7 @@
 <header>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/}">Extreme Motorsports</a>
+            <a class="navbar-brand" th:href="@{/index}">Extreme Motorsports</a>
             <div sec:authorize="isAnonymous()">
                 <a th:href="@{/login}">Login</a>
                 <a th:href="@{/customerregistration}">Customer Registration</a>
@@ -47,7 +47,7 @@
             <div sec:authorize="isAuthenticated()">
                 <a th:href="@{/index}">Home</a>
                 <a th:href="@{/vehicles}">Vehicles</a>
-                <a th:href="@{/rented}"
+<!--                <a th:href="@{/rented}"-->
                 <a th:href="@{/logout}">Logout</a>
             </div>
             <div th:if="${param.logout}" class="error">

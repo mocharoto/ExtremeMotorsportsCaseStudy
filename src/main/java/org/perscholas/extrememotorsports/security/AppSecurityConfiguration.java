@@ -42,7 +42,7 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/customerregistration").permitAll()
                 .antMatchers("/vehicleregistration").hasAuthority("ROLE_EMPLOYEE")
                 .antMatchers("/customers").hasAuthority("ROLE_EMPLOYEE")
-                .antMatchers("/vehicles/rent").hasAuthority("ROLE_CUSTOMER")
+                .antMatchers("/vehicles/rent").hasAnyAuthority("ROLE_CUSTOMER", "ROLE_EMPLOYEE")
                 //.antMatchers("/customer/**").hasAnyAuthority("ROLE_CUSTOMER", "ROLE_EMPLOYEE")
                 .anyRequest().authenticated()
                 .and()
